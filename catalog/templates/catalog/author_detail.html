@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Title: {{ author.lastname }}</h1>
+
+    <p><strong>Last_Name:</strong><a href="{% url 'author-detail' author.id %}">({{author.id}})</a> </p>
+    <p><strong>First_Name:</strong> {{ author.first_name }}</p>
+    <p><strong>Date_of_Birth:</strong> {{ author.date_of_birth }}</p>
+    <p><strong>Date_of_Death:</strong> {{ author.date_of_death }}</p>
+
+    <div style="margin-left:20px;margin-top:20px">
+        <h4>auth</h4>
+
+        {% for auth in author.book_set.all %}
+        <p><strong>Date_of_Birth:</strong>{{ auth.date_of_birth }}</p>
+        <p class="text-muted"><strong>Id:</strong>{{ auth.id }}</p>
+        {% endfor %}
+    </div>
+{% endblock %}
